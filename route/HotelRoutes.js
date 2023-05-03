@@ -12,4 +12,3 @@ HotelRoutes.put('/update',UpdateHotel)
 HotelRoutes.delete('/delete' , RemoveHotel)
 
 export default HotelRoutes
-
