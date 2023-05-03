@@ -80,6 +80,20 @@ export const UpdateHotel = (req,res) => {
     }
 }
 
+export const RemoveHotel = (req,res) => {
+
+    const filter = {
+        _id : req.body.id
+    }
+
+    Hotel.findByIdAndDelete(filter).then(result => {
+        res.status(200).send(`${result} is removed !`)
+    }).catch(error => {
+        res.status(500).send(`Error ${error}`)
+    })
+
+}
+
 export const HotelList = (req,res) => {
     const filter = {
         city : req.body.destination
