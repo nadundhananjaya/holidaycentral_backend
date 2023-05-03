@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 
 
 import CustomerRoutes from "./route/CustomerRoutes.js";
+import PackagesRoutes from "./route/PackageRoutes";
 
 
 
@@ -24,7 +25,11 @@ app.use((req, res, next) => {
         return next();
     }
 });
+
 app.use('/customer', CustomerRoutes)
+
+app.use('/package', PackagesRoutes)
+
 
 mongoose.connect("mongodb://localhost:27017/holiday_central").then(result => {
     app.listen(8080);
