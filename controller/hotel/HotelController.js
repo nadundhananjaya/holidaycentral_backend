@@ -38,7 +38,7 @@ export const AddHotel = (req,res) => {
         });
 
         hotel.save().then(result => {
-            res.send(`${result} is successfully added !`)
+            res.send(`${result} is added successfully!`)
         }).catch(error => {
             res.send(`${error}`)
         })
@@ -73,35 +73,32 @@ export const UpdateHotel = (req,res) => {
         });
 
         Hotel.findByIdAndUpdate(filter,hotel).then(result => {
-            res.send(`${result} is successfully updated !`)
+            res.send(`${result} is updated successfully!`)
         }).catch(error => {
             res.send(`${error}`)
         })
     }
 }
 
-export const RemoveHotel = (req,res) => {
-
-    const filter = {
-        _id : req.body.id
-    }
-
-    Hotel.findByIdAndDelete(filter).then(result => {
-        res.status(200).send(`${result} is removed !`)
-    }).catch(error => {
-        res.status(500).send(`Error ${error}`)
-    })
-
-}
-
 export const HotelList = (req,res) => {
-
     const filter = {
         city : req.body.destination,
         starRating :  { $lte: req.body.starRating },
     }
     Hotel.find(filter).then(result => {
         res.status(200).send(result)
+    }).catch(error => {
+        res.status(500).send(`Error ${error}`)
+    })
+}
+
+export const RemoveHotel = (req,res) => {
+    const filter = {
+        _id : req.body.id
+    }
+
+    Hotel.findByIdAndDelete(filter).then(result => {
+        res.status(200).send(`${result} is removed!`)
     }).catch(error => {
         res.status(500).send(`Error ${error}`)
     })
