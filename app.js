@@ -1,11 +1,11 @@
 import express from "express"
+import PackageRoutes from "./route/PackageRoutes.js"
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-
-
+import FlightRoutes from "./route/FlightRoutes.js";
 import CustomerRoutes from "./route/CustomerRoutes.js";
-import PackagesRoutes from "./route/PackageRoutes";
-
+import HotelRoutes from "./route/HotelRoutes.js";
+import CheckoutRoutes from "./route/CheckoutRoutes.js";
 
 
 const app = express()
@@ -25,11 +25,15 @@ app.use((req, res, next) => {
         return next();
     }
 });
-
 app.use('/customer', CustomerRoutes)
 
-app.use('/package', PackagesRoutes)
+app.use('/flight', FlightRoutes);
 
+app.use('/hotel', HotelRoutes)
+
+app.use('/package', PackageRoutes)
+
+app.use('/checkout', CheckoutRoutes)
 
 mongoose.connect("mongodb://localhost:27017/holiday_central").then(result => {
     app.listen(8080);
