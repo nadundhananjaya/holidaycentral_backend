@@ -95,9 +95,10 @@ export const RemoveHotel = (req,res) => {
 }
 
 export const HotelList = (req,res) => {
+
     const filter = {
-        city : req.body.destination
-        // arrivalAirport :  req.body.arrivalAirport,
+        city : req.body.destination,
+        starRating :  { $lte: req.body.starRating },
     }
     Hotel.find(filter).then(result => {
         res.status(200).send(result)
@@ -105,4 +106,3 @@ export const HotelList = (req,res) => {
         res.status(500).send(`Error ${error}`)
     })
 }
-
