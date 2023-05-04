@@ -1,4 +1,4 @@
-import Package from "../../model/Packages/Package.js";
+import Package from "../../model/Package/Package.js";
 
 
 const requiredFields = [
